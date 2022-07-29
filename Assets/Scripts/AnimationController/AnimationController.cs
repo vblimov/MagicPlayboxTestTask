@@ -36,7 +36,7 @@ namespace Ingosstrakh.AnimationController
             else if (state.IsTag(AnimationState.MoveOut.ToString()))
             {
                 playerAnimator.gameObject.SetActive(false);
-
+                audioSource.clip = null;
             }
         }
         void IStateMachineEnterReceiver.OnAnimatorEnterState(Animator animator, AnimatorStateInfo state)
