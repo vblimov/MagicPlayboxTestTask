@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Ingosstrakh.UI.ScoreView
 {
@@ -9,6 +10,7 @@ namespace Ingosstrakh.UI.ScoreView
     {
         [SerializeField] private TextMeshProUGUI textTMP;
         [SerializeField] private TextMeshProUGUI textOutlineTMP;
+        [SerializeField] private float offsetPerChar = 50f;
 
         [Header("CounterAnimations")] 
         [SerializeField] private AnimationCurve easeOutQuad;
@@ -42,6 +44,7 @@ namespace Ingosstrakh.UI.ScoreView
 
         public void SetScoreSilent(int score)
         {
+            SetTextRect(score.ToString());
             textTMP.text = score.ToString();
             textOutlineTMP.text = score.ToString();
         }
@@ -61,6 +64,7 @@ namespace Ingosstrakh.UI.ScoreView
         }
         private IEnumerator CounterIncrementAnimationProcess(int current, int delta)
         {
+            SetTextRect((current + delta).ToString());
             var key = easeOutQuad.keys[0];
             key.value = current;
             easeOutQuad.MoveKey(0, key);
@@ -78,6 +82,13 @@ namespace Ingosstrakh.UI.ScoreView
             }
         }
 
+        private void SetTextRect(string text)
+        {
+            if (text.Length > textOutlineTMP.text.Length)
+            {
+                textOutlineTMP.GetComponent<LayoutElement>().minWidth = text.Length * offsetPerChar;
+            }
+        }
         private void ResetAnimationTrigger()
         {
             starAnimator.ResetTrigger(showTrigger);

@@ -35,6 +35,7 @@ namespace Ingosstrakh.UI.MagicComponents
             JsonSerializer.SaveLocal(JsonSerializer.DefaultPath + nameof(MagicData), magicData);
             magicViews.ForEach(mag => mag.PlayButtonPressed -= UpdateCounter);
         }
+
         private void ShowStarsCount()
         {
             foreach (var view in magicViews)
@@ -43,9 +44,10 @@ namespace Ingosstrakh.UI.MagicComponents
                 view.Init(desc.Value, desc.MaxValue);
             }
         }
+
         private void ShowStarsCount(MagicTag magicTag)
         {
-           magicViews.Find(m => m.Tag == magicTag).SetProgress(magicData.GetMagicDescription(magicTag).Value);
+            magicViews.Find(m => m.Tag == magicTag).SetProgress(magicData.GetMagicDescription(magicTag).Value);
         }
 
         private async void UpdateCounter(MagicTag magicTag, int delta)
@@ -54,18 +56,24 @@ namespace Ingosstrakh.UI.MagicComponents
             {
                 return;
             }
+
             var magicDescription = magicData.GetMagicDescription(magicTag);
-            if (magicDescription.Value + delta <= magicDescription.MaxValue)
+            if (magicDescription.Value == magicDescription.MaxValue)
             {
-                magicData.ChangeMagicDescriptionValue(magicTag, delta);
-                ShowStarsCount(magicTag);
-                OnMagicScoreIncreased?.Invoke(delta);
+                return;
+            }
+            if (magicDescription.Value + delta > magicDescription.MaxValue)
+            {
+                delta = magicDescription.MaxValue - magicDescription.Value;
             }
 
+            magicData.ChangeMagicDescriptionValue(magicTag, delta);
+            ShowStarsCount(magicTag);
+            OnMagicScoreIncreased?.Invoke(delta);
+
             isCooldowned = true;
-            await Task.Delay((int)(ScoreIncreaseCooldown * 1000));
+            await Task.Delay((int) (ScoreIncreaseCooldown * 1000));
             isCooldowned = false;
-            
         }
     }
 }

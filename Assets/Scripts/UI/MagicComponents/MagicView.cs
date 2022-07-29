@@ -9,12 +9,13 @@ namespace Ingosstrakh.UI.MagicComponents
         [SerializeField] private Button playButton;
         [SerializeField] private ProgressView progressView;
         [SerializeField] private MagicTag magicTag;
-
+        private int starsPerClick = 0;
         public MagicTag Tag => magicTag;
         public event Action<MagicTag, int> PlayButtonPressed;
 
         private void Awake()
         {
+            starsPerClick = ResourcesLoader.ResourceLoader.DefaultMagicDescriptions.StarsPerClick;
             playButton.onClick.AddListener(PlayMagic);
         }
 
@@ -26,7 +27,7 @@ namespace Ingosstrakh.UI.MagicComponents
         private void PlayMagic()
         {
             Debug.Log("Play button pressed");
-            PlayButtonPressed?.Invoke(magicTag, 5);
+            PlayButtonPressed?.Invoke(magicTag, starsPerClick);
         }
 
         public void Init(int value, int maxValue)

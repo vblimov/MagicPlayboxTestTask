@@ -227,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textTMP: {fileID: 569864421}
   textOutlineTMP: {fileID: 1232683002}
+  offsetPerChar: 55
   easeOutQuad:
     serializedVersion: 2
     m_Curve:
@@ -256,7 +257,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.9998865
       inSlope: 4.9382772
       outSlope: 4.9382772
       tangentMode: 0
@@ -264,23 +265,32 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.06613757
     - serializedVersion: 3
-      time: 0.4
-      value: 1
-      inSlope: 0.9753328
-      outSlope: 0.9753328
+      time: 0.14289613
+      value: 1.3467195
+      inSlope: 0.6059786
+      outSlope: 0.6059786
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4862363
+      outWeight: 0.22270663
+    - serializedVersion: 3
+      time: 0.6
+      value: 1.25
+      inSlope: -0.67467123
+      outSlope: -0.67467123
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.118165754
+      outWeight: 0.25178584
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.28292704
+      outSlope: -0.28292704
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1528,7 +1538,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2345,7 +2355,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1805300821}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.5485714
+  m_Size: 0.61714286
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2718,7 +2728,6 @@ GameObject:
   - component: {fileID: 1232683000}
   - component: {fileID: 1232683003}
   - component: {fileID: 1232683002}
-  - component: {fileID: 1232683004}
   - component: {fileID: 1232683005}
   m_Layer: 5
   m_Name: Score_Outline(TMP)
@@ -2803,7 +2812,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2846,20 +2855,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232682999}
   m_CullTransparentMesh: 1
---- !u!114 &1232683004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232682999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5eed043a231428c9e81361c07d41a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textTMP: {fileID: 569864421}
-  textOutlineTMP: {fileID: 1232683002}
 --- !u!114 &1232683005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2873,7 +2868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 150
+  m_MinWidth: 165
   m_MinHeight: -1
   m_PreferredWidth: -1
   m_PreferredHeight: -1

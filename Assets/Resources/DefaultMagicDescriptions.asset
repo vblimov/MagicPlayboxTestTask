@@ -16,20 +16,21 @@ MonoBehaviour:
   - Tag: 0
     Description:
       Value: 0
-      MaxValue: 15
+      MaxValue: 20000
   - Tag: 1
     Description:
       Value: 0
-      MaxValue: 20
+      MaxValue: 20000
   - Tag: 2
     Description:
       Value: 0
-      MaxValue: 20
+      MaxValue: 20000
   - Tag: 3
     Description:
       Value: 0
-      MaxValue: 15
+      MaxValue: 20000
   - Tag: 4
     Description:
       Value: 0
-      MaxValue: 24
+      MaxValue: 50000
+  starsPerClick: 5000
