@@ -2,21 +2,17 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using Zenject;
 
 namespace Ingosstrakh.AR
 {
-    [RequireComponent(typeof(ARTrackedImageManager))]
     public class ImageTracking : MonoBehaviour
     {
         [SerializeField] private GameObject placeablePrefab;
         private GameObject spawnedPrefab;
+        [Inject]
         private ARTrackedImageManager arTrackedImageManager;
-
-        private void Awake()
-        {
-            arTrackedImageManager = GetComponent<ARTrackedImageManager>();
-        }
-
+        
         private void OnEnable()
         {
             arTrackedImageManager.trackedImagesChanged += ImagesChanged;

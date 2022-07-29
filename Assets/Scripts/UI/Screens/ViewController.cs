@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Ingosstrakh.UI.MagicComponents;
+﻿using Ingosstrakh.UI.MagicComponents;
 using UnityEngine;
 
-namespace Ingosstrakh.UI
+namespace Ingosstrakh.UI.Screens
 {
     public class ViewController : MonoBehaviour
     {

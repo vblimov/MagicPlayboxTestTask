@@ -64,7 +64,8 @@ namespace Ingosstrakh.UI.ScoreView
         }
         private IEnumerator CounterIncrementAnimationProcess(int current, int delta)
         {
-            SetTextRect((current + delta).ToString());
+            var score = current + delta;
+            SetTextRect(score.ToString());
             var key = easeOutQuad.keys[0];
             key.value = current;
             easeOutQuad.MoveKey(0, key);
@@ -80,6 +81,8 @@ namespace Ingosstrakh.UI.ScoreView
                 evaluatedTime += Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+            textTMP.text = score.ToString();
+            textOutlineTMP.text = score.ToString();
         }
 
         private void SetTextRect(string text)
