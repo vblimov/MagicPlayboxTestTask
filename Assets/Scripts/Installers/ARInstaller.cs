@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Ingosstrakh.Audio;
+using Ingosstrakh.Signals;
+using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using Zenject;
 
@@ -9,7 +11,7 @@ namespace Ingosstrakh.Installers
         [SerializeField] private ARTrackedImageManager arTrackedImageManager;
         public override void InstallBindings()
         {
-            Container.Bind<ARTrackedImageManager>().FromInstance(arTrackedImageManager).AsSingle().NonLazy();
+            Container.Bind<ARTrackedImageManager>().FromInstance(arTrackedImageManager).AsCached().NonLazy();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using Ingosstrakh.AnimationController.AnimationBroadcaster;
+using Ingosstrakh.Audio;
 using UnityEngine;
+using Zenject;
 
 namespace Ingosstrakh.AnimationController
 {
@@ -9,57 +11,29 @@ namespace Ingosstrakh.AnimationController
         [SerializeField] private Animator playerAnimator;
         [SerializeField] private AudioClip moveInClip;
         [SerializeField] private AudioClip moveOutClip;
-        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioManager audioManager;
         private void OnEnable()
         {
             playerAnimator.SetTrigger(AnimationState.MoveIn.ToString());
         }
 
-        private void PlayAnimationRange(AnimationConfig.AnimationDescription animationDescription)
-        {
-        }
-
         void IStateMachineExitReceiver.OnAnimatorExitState(Animator animator, AnimatorStateInfo state)
         {
-            if (state.IsTag(AnimationState.MoveIn.ToString()))
-            {
-
-            }
-            else if (state.IsTag(AnimationState.Idle.ToString()))
-            {
-
-            }
-            else if (state.IsTag(AnimationState.Stay.ToString()))
-            {
-
-            }
-            else if (state.IsTag(AnimationState.MoveOut.ToString()))
+            if (state.IsTag(AnimationState.MoveOut.ToString()))
             {
                 playerAnimator.gameObject.SetActive(false);
-                audioSource.clip = null;
+                audioManager.ResetAudio();
             }
         }
         void IStateMachineEnterReceiver.OnAnimatorEnterState(Animator animator, AnimatorStateInfo state)
         {
             if (state.IsTag(AnimationState.MoveIn.ToString()))
             {
-                audioSource.Stop();
-                audioSource.clip = moveInClip;
-                audioSource.Play();
-            }
-            else if (state.IsTag(AnimationState.Idle.ToString()))
-            {
-
-            }
-            else if (state.IsTag(AnimationState.Stay.ToString()))
-            {
-
+                audioManager.PlayAudio(moveInClip);
             }
             else if (state.IsTag(AnimationState.MoveOut.ToString()))
             {
-                audioSource.Stop();
-                audioSource.clip = moveOutClip;
-                audioSource.Play();
+                audioManager.PlayAudio(moveOutClip);
             }
         }
     }

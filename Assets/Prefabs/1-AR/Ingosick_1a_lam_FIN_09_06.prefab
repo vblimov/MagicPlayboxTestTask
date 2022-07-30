@@ -6597,7 +6597,8 @@ GameObject:
   - component: {fileID: 2553529497084347580}
   - component: {fileID: 2553529497084347581}
   - component: {fileID: 2553529497084347582}
-  - component: {fileID: 2553529497084347583}
+  - component: {fileID: 4015124458099095735}
+  - component: {fileID: 7912003601580136151}
   m_Layer: 0
   m_Name: Ingosick_1a_lam_FIN_09_06
   m_TagString: Untagged
@@ -6667,8 +6668,21 @@ MonoBehaviour:
   playerAnimator: {fileID: 2553529497084347581}
   moveInClip: {fileID: 8300000, guid: feb6cc352397a0b4a8df20201394b5f3, type: 3}
   moveOutClip: {fileID: 8300000, guid: e10ce52d6b998de41943a9778b292704, type: 3}
-  audioSource: {fileID: 2553529497084347583}
---- !u!82 &2553529497084347583
+  audioManager: {fileID: 4015124458099095735}
+--- !u!114 &4015124458099095735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2553529497084347576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd66dd3abd9477c9f36b61eb61f08e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 7912003601580136151}
+--- !u!82 &7912003601580136151
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
