@@ -9,7 +9,6 @@ namespace Ingosstrakh.ResourcesLoader
 {
     public static class JsonSerializer
     {
-        public static string DefaultPath = "./data/";
         /// <summary>
         ///  Load data from PlayerPrefs. If function return false - use default constructor for serialized object
         ///  Loaded object must have empty constructor and public fields
@@ -33,7 +32,7 @@ namespace Ingosstrakh.ResourcesLoader
         {
             try
             {
-                var streamWriter = new StreamWriter(filePath);
+                var streamWriter = new StreamWriter($"{Application.persistentDataPath}{filePath}");
                 streamWriter.Write(JsonConvert.SerializeObject( data ));
                 streamWriter.Close();
             }
@@ -48,7 +47,7 @@ namespace Ingosstrakh.ResourcesLoader
             data = default;
             try
             {
-                var streamReader = new StreamReader(filePath);
+                var streamReader = new StreamReader($"{Application.persistentDataPath}{filePath}");
                 data = JsonConvert.DeserializeObject<T>( streamReader.ReadLine() ?? string.Empty );
                 streamReader.Close();
             }

@@ -25,14 +25,14 @@ namespace Ingosstrakh.UI.MagicComponents
 
         private void LoadMagicData()
         {
-            JsonSerializer.LoadLocal(JsonSerializer.DefaultPath + nameof(MagicData), out magicData);
+            JsonSerializer.LoadLocal(nameof(MagicData), out magicData);
             magicData ??= new MagicData(true);
             OnMagicScoreLoaded?.Invoke(magicData.GetScore());
         }
 
         private void OnDestroy()
         {
-            JsonSerializer.SaveLocal(JsonSerializer.DefaultPath + nameof(MagicData), magicData);
+            JsonSerializer.SaveLocal(nameof(MagicData), magicData);
             magicViews.ForEach(mag => mag.PlayButtonPressed -= UpdateCounter);
         }
 
