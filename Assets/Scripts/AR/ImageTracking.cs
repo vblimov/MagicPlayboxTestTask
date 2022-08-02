@@ -13,15 +13,6 @@ namespace Ingosstrakh.AR
         private GameObject spawnedPrefab;
         [Inject]
         private ARTrackedImageManager arTrackedImageManager;
-        
-        private void OnEnable()
-        {
-            // arTrackedImageManager.trackedImagesChanged += ImagesChanged;
-        }
-        private void OnDisable()
-        {
-            // arTrackedImageManager.trackedImagesChanged -= ImagesChanged;
-        }
 
         public void ImagesChanged(ARTrackedImageSignal signal)
         {
@@ -41,7 +32,7 @@ namespace Ingosstrakh.AR
             }
         }
 
-        private void UpdateImage(ARTrackedImage trackedImage)
+        private void UpdateImage(Component trackedImage)
         {
             
             var position = trackedImage.transform.position;
@@ -53,8 +44,6 @@ namespace Ingosstrakh.AR
             {
                 spawnedPrefab.transform.position = position;
             }
-
-            if (Camera.main != null) spawnedPrefab.transform.LookAt(Camera.main.transform);
         }
     }
 }
