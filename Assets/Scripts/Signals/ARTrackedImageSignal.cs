@@ -1,7 +1,9 @@
-﻿namespace Ingosstrakh.Signals
+﻿using UnityEngine.XR.ARFoundation;
+
+namespace Ingosstrakh.Signals
 {
-    public class ARTrackedImageSignal  
+    public class ARTrackedImageSignal
     {
-        
+        public ARTrackedImagesChangedEventArgs TrackedImagesChangedEventArgs;
     }
 }

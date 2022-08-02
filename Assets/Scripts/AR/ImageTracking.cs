@@ -1,4 +1,5 @@
 ﻿using System;
+using Ingosstrakh.Signals;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -15,15 +16,16 @@ namespace Ingosstrakh.AR
         
         private void OnEnable()
         {
-            arTrackedImageManager.trackedImagesChanged += ImagesChanged;
+            // arTrackedImageManager.trackedImagesChanged += ImagesChanged;
         }
         private void OnDisable()
         {
-            arTrackedImageManager.trackedImagesChanged -= ImagesChanged;
+            // arTrackedImageManager.trackedImagesChanged -= ImagesChanged;
         }
 
-        private void ImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
+        public void ImagesChanged(ARTrackedImageSignal signal)
         {
+            var eventArgs = signal.TrackedImagesChangedEventArgs;
             foreach (var trackedImage in eventArgs.added)
             {
                 UpdateImage(trackedImage);

@@ -27,14 +27,6 @@ namespace Ingosstrakh.UI.Screens
         {
             var arSceneLoading = SceneManager.LoadSceneAsync("1-AR");
             var animSceneLoading = SceneManager.LoadSceneAsync("1-Animation", LoadSceneMode.Additive);
-            animSceneLoading.allowSceneActivation = false;
-            arSceneLoading.allowSceneActivation = false;
-            while (animSceneLoading.progress < 0.9f && arSceneLoading.progress < 0.9f)
-            {
-                await Task.Delay(100);
-            }
-            animSceneLoading.allowSceneActivation = true;
-            arSceneLoading.allowSceneActivation = true;
         }
 
         private void OpenUIScene()
